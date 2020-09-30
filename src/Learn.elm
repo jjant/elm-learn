@@ -1,10 +1,12 @@
-effect module Learn where { subscription = MySub } exposing (MySub(..), State, init, mySub, onEffects, onSelfMsg, sendNumber, subMap)
+effect module Learn where { subscription = MySub } exposing (myVal)
 
-import Browser
-import Elm.Kernel.Native
-import Html
 import Platform exposing (Task)
 import Task
+
+
+myVal : Float
+myVal =
+    42
 
 
 
@@ -78,13 +80,6 @@ init =
 
 onEffects : Platform.Router msg Int -> List (MySub msg) -> State -> Task Never State
 onEffects router subs state =
-    let
-        _ =
-            Debug.log "state" state
-
-        _ =
-            Debug.log "subs" subs
-    in
     -- case subs of
     --    [] -> Task.succeed state
     --    (sub1::subs) ->
